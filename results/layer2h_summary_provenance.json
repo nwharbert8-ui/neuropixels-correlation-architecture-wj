@@ -1,0 +1,61 @@
+{
+  "pipeline_file": "layer2h_analysis.py",
+  "execution_date": "2026-04-29",
+  "framework_reference": "Layer 2H of wj-methodology.md (Harbert, in press, Frontiers in Pharmacology). See also .claude/rules/research_notes/2026-04-29_principled_pairing_criterion.md",
+  "n_comparisons_analyzed": 1986,
+  "n_sessions": 29,
+  "type2_findings": {
+    "wj_unsigned_mean": 0.4267706072711612,
+    "wj_unsigned_std": 0.08048591148473189,
+    "wj_signed_mean": 0.9534792710623698,
+    "wj_signed_std": 0.011361146937192198,
+    "gap_mean": 0.5267086637912087,
+    "gap_std": 0.0730235342415446,
+    "sign_inv_pct_mean": 91.92318546707688,
+    "sign_inv_pct_median": 92.05416639577372,
+    "sign_inv_pct_std": 1.3913109648721718,
+    "sign_inv_pct_min": 86.50905876977711,
+    "sign_inv_pct_max": 95.76377843222484,
+    "n_comparisons": 1986,
+    "n_sessions": 29,
+    "paired_t_signed_vs_unsigned": 321.4380137390138,
+    "paired_p_signed_vs_unsigned": 0.0
+  },
+  "type6_findings": {
+    "spearman_wj_mean": 0.4267706072711612,
+    "pearson_wj_mean": 0.4288318218646453,
+    "type6_gap_mean": -0.002061214593484155,
+    "type6_gap_std": 0.00944294339745741,
+    "type6_gap_median": -0.0002338982999979533,
+    "type6_gap_abs_mean": 0.006996748600300656,
+    "type6_gap_abs_median": 0.004969995541716565,
+    "fraction_gap_within_005": 1.0,
+    "fraction_gap_within_01": 1.0,
+    "n_comparisons": 1986
+  },
+  "type5_findings": {
+    "full_population_same_stim_wj": 0.5092030483309778,
+    "full_population_diff_stim_wj": 0.41329746664099776,
+    "mean_local_same_stim_wj": 0.5685038965517241,
+    "mean_local_diff_stim_wj": 0.45852148275862065,
+    "mean_local_global_gap_same": -0.0593008482207463,
+    "mean_local_global_gap_diff": -0.04522401611762293,
+    "n_areas": 29,
+    "n_areas_local_exceeds_global": 25.0
+  },
+  "type4_findings": {
+    "n_unique_stim_pairs": 18,
+    "most_consistent_stim_pair": "flashes vs spontaneous",
+    "min_cv": 0.1016096586480698,
+    "max_cv": 0.16173414140973186,
+    "sign_inv_pct_session_mean_of_means": 91.92403290222381,
+    "sign_inv_pct_session_std_of_means": 0.6222112125209338,
+    "n_sessions_with_mean_sign_inv_above_85": 29,
+    "n_sessions_with_mean_sign_inv_above_90": 29,
+    "n_sessions_total": 29
+  },
+  "type1_pilot_status": "deferred \u2014 requires NWB reload",
+  "config": {
+    "random_seed": 42
+  }
+}

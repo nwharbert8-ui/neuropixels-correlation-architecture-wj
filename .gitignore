@@ -1,0 +1,36 @@
+# Data files (too large for git, available from DANDI)
+data/
+*.nwb
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.pytest_cache/
+
+# Environments
+.env
+.venv
+env/
+venv/
+
+# Logs
+pipeline_logs/
+*.log
+
+# Large per-comparison null files (~2000 files, regenerable)
+results/ses-*_*_null.csv
+results/session*_checkpoint.json
+results/ses-*_summary.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp

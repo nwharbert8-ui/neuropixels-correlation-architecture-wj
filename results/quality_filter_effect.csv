@@ -1,0 +1,7 @@
+condition_a,condition_b,comparison_type,filter,n_units_filter,n_units_variable,wj_unsigned,wj_signed,gap,sign_inversion_pct
+natural_scenes_presentations_9.0,natural_scenes_presentations_10.0,same-stim,FR_only,2222,2215,0.5291,0.961,0.4319,91.7
+natural_scenes_presentations_9.0,natural_scenes_presentations_10.0,same-stim,FR+AllenQC,900,900,0.5077,0.9537,0.4461,90.6
+natural_scenes_presentations_9.0,drifting_gratings_presentations_2.0,diff-stim,FR_only,2222,2182,0.4032,0.9492,0.546,91.5
+natural_scenes_presentations_9.0,drifting_gratings_presentations_2.0,diff-stim,FR+AllenQC,900,899,0.408,0.9444,0.5363,90.6
+spontaneous_presentations_spontaneous,natural_scenes_presentations_9.0,diff-stim,FR_only,2222,2218,0.4538,0.9515,0.4977,91.1
+spontaneous_presentations_spontaneous,natural_scenes_presentations_9.0,diff-stim,FR+AllenQC,900,900,0.4671,0.9501,0.483,90.6

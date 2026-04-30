@@ -1,0 +1,13 @@
+condition_a,condition_b,comparison_type,bin_size_s,bin_size_label,n_units,n_bins_a,n_bins_b,wj_unsigned,wj_signed,gap,sign_inversion_pct,wj_pearson
+natural_scenes_presentations_9.0,natural_scenes_presentations_10.0,same-stim,0.05,50ms,2215,9600,9600,0.5226,0.9779,0.4553,95.4,0.5309
+natural_scenes_presentations_9.0,natural_scenes_presentations_10.0,same-stim,0.1,100ms (current),2215,3840,3840,0.5291,0.961,0.4319,91.7,0.5534
+natural_scenes_presentations_9.0,natural_scenes_presentations_10.0,same-stim,0.2,200ms,2215,1920,1920,0.4952,0.9417,0.4465,88.4,0.5193
+natural_scenes_presentations_9.0,natural_scenes_presentations_13.0,same-stim,0.05,50ms,2213,9600,10550,0.4929,0.9786,0.4857,95.8,0.4901
+natural_scenes_presentations_9.0,natural_scenes_presentations_13.0,same-stim,0.1,100ms (current),2213,3840,4220,0.5231,0.9639,0.4408,92.4,0.5241
+natural_scenes_presentations_9.0,natural_scenes_presentations_13.0,same-stim,0.2,200ms,2213,1920,2110,0.4791,0.9469,0.4678,89.8,0.4739
+natural_scenes_presentations_9.0,drifting_gratings_presentations_2.0,diff-stim,0.05,50ms,2182,9600,8000,0.4092,0.9694,0.5602,94.8,0.4073
+natural_scenes_presentations_9.0,drifting_gratings_presentations_2.0,diff-stim,0.1,100ms (current),2182,3840,4000,0.4032,0.9492,0.546,91.5,0.3985
+natural_scenes_presentations_9.0,drifting_gratings_presentations_2.0,diff-stim,0.2,200ms,2182,1920,2000,0.4021,0.9295,0.5274,88.2,0.4015
+spontaneous_presentations_spontaneous,natural_scenes_presentations_9.0,diff-stim,0.05,50ms,2218,24735,9600,0.4641,0.9722,0.5082,94.8,0.4743
+spontaneous_presentations_spontaneous,natural_scenes_presentations_9.0,diff-stim,0.1,100ms (current),2218,12365,3840,0.4538,0.9515,0.4977,91.1,0.4555
+spontaneous_presentations_spontaneous,natural_scenes_presentations_9.0,diff-stim,0.2,200ms,2218,6181,1920,0.4497,0.931,0.4813,87.5,0.4567

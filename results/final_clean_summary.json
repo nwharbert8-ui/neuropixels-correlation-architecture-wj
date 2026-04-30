@@ -1,0 +1,88 @@
+{
+  "filters_applied": [
+    "min_bins >= 50",
+    "excluded natural_movie_one (systematic short epochs)"
+  ],
+  "n_valid": 429,
+  "n_sessions": 5,
+  "within_condition_splithalf": 0.797,
+  "same_stim_wj": {
+    "mean": 0.5451678446512771,
+    "std": 0.05657783181411679,
+    "n": 53
+  },
+  "diff_stim_wj": {
+    "mean": 0.42513718089558555,
+    "std": 0.06791565661577659,
+    "n": 376
+  },
+  "mann_whitney_p": 2.8473414942738322e-21,
+  "sign_inv_mean": 91.61283216513277,
+  "sign_inv_median": 92.0,
+  "wj_range": [
+    0.2868457450282959,
+    0.6378612686207706
+  ],
+  "pair_type_means": {
+    "gabors_vs_spontaneous": {
+      "mean": 0.3726108653275523,
+      "n": 8
+    },
+    "spontaneous_vs_static_gratings": {
+      "mean": 0.4045966209581779,
+      "n": 24
+    },
+    "natural_scenes_vs_spontaneous": {
+      "mean": 0.410285503784619,
+      "n": 24
+    },
+    "drifting_gratings_vs_spontaneous": {
+      "mean": 0.3989819279784679,
+      "n": 24
+    },
+    "flashes_vs_spontaneous": {
+      "mean": 0.36933882953738795,
+      "n": 8
+    },
+    "gabors_vs_static_gratings": {
+      "mean": 0.37147360881322056,
+      "n": 23
+    },
+    "gabors_vs_natural_scenes": {
+      "mean": 0.369802052950648,
+      "n": 24
+    },
+    "drifting_gratings_vs_gabors": {
+      "mean": 0.3996119463639741,
+      "n": 21
+    },
+    "flashes_vs_gabors": {
+      "mean": 0.37732704968880865,
+      "n": 7
+    },
+    "natural_scenes_vs_static_gratings": {
+      "mean": 0.522119363890978,
+      "n": 62
+    },
+    "drifting_gratings_vs_static_gratings": {
+      "mean": 0.4517750854926595,
+      "n": 48
+    },
+    "flashes_vs_static_gratings": {
+      "mean": 0.3684522401212281,
+      "n": 16
+    },
+    "drifting_gratings_vs_natural_scenes": {
+      "mean": 0.44005466177932867,
+      "n": 57
+    },
+    "flashes_vs_natural_scenes": {
+      "mean": 0.38075656696029214,
+      "n": 18
+    },
+    "drifting_gratings_vs_flashes": {
+      "mean": 0.37019902199921845,
+      "n": 12
+    }
+  }
+}

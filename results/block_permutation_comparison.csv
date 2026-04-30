@@ -1,0 +1,4 @@
+condition_a,condition_b,comparison_type,n_units,n_bins_a,n_bins_b,obs_wj,label_null_mean,label_null_std,label_p,block_null_mean,block_null_std,block_p,null_distributions_differ_p
+natural_scenes_presentations_9.0,natural_scenes_presentations_10.0,same-stimulus,2215,3840,3840,0.5291,0.7411,0.001459,0.0,0.5291,0.0,0.336,0.0
+natural_scenes_presentations_9.0,drifting_gratings_presentations_2.0,diff-stimulus,2182,3840,4000,0.4032,0.759,0.001619,0.0,0.4032,0.0,0.974,0.0
+spontaneous_presentations_spontaneous,natural_scenes_presentations_9.0,diff-stimulus,2218,12365,3840,0.4538,0.7793,0.001649,0.0,0.4538,0.0,1.0,0.0
