@@ -110,15 +110,21 @@ P("Spike trains were binned at 100 ms. Within each visual stimulus condition (e.
   "we computed the full unit-by-unit Spearman correlation matrix. Architectures were compared "
   "across all condition pairs within a session (2,052 condition pairs across 30 sessions). "
   "Overall reorganization between two conditions was quantified with the unsigned weighted "
-  "Jaccard index on the absolute correlation entries; reorganization is reported as 1 minus "
-  "this index. Random seed 42 was used throughout; all condition correlation matrices were "
+  "Jaccard index (a weighted generalization of the Jaccard 1912 set-overlap coefficient) on the "
+  "absolute correlation entries; reorganization is reported as 1 minus this index. Random seed 42 was used throughout; all condition correlation matrices were "
   "saved to disk for reproducibility.")
 H("Direct, magnitude-stratified sign-flip rate", 12)
 P("To measure correlation sign reversal directly, for every neuron pair we tested whether the "
   "sign of its correlation differed between conditions (sign(r_A) != sign(r_B)). Because a sign "
   "reversal is only architecturally meaningful when both correlations have real magnitude, the "
   "rate was stratified by min(|r_A|, |r_B|) at thresholds 0.0, 0.05, 0.10, 0.15, 0.20 and 0.30, "
-  "and each stratum was tested against the 50% chance rate with a binomial test. We do not use "
+  "and each stratum was compared against a within-condition split-half null: each condition's "
+  "samples were split into two independent halves, a correlation matrix was recomputed on each "
+  "half, and the sign-flip rate was measured between two samples of the same condition (the "
+  "reversal rate expected from sampling alone), with sessions as the replication unit (Wilcoxon "
+  "across sessions per stratum). The 50% chance rate is not an adequate null, because strong "
+  "correlations reflecting shared input are not expected to reverse at coin-flip rates between any "
+  "two conditions; the within-condition null is the appropriate comparison. We do not use "
   "any gap between signed-handling and unsigned similarity as a sign-inversion measure, because "
   "such gaps conflate magnitude and sign change; the direct, stratified rate is reported instead.")
 H("Per-unit decomposition and waveform association", 12)
@@ -154,13 +160,16 @@ P("Across 2,052 condition pairs, correlation architecture reorganized substantia
   "real correlation magnitude, sign is preserved in more than 98% of cases: the reorganization is a "
   "rearrangement of correlation strength, not of sign.")
 H("Most neurons restructure magnitude while preserving sign", 12)
-P("The per-unit decomposition showed that 56% of neurons restructured their coupling profile in "
-  "strength while preserving sign (coherent-magnitude), 28% changed little (stable-hub), about 4.2% "
-  "split their partners by sign (split-learner), and essentially none were unstructured (~0% "
-  "incoherent). Row reorganization and sign coherence traded off continuously and consistently: "
+P("The per-unit decomposition, binning the continuous reorganization-coherence plane into four "
+  "descriptive regions (not discrete classes), showed that 56% of neurons restructured their coupling "
+  "profile in strength while preserving sign (coherent-magnitude), 28% changed little (stable-hub), "
+  "about 4.2% split their partners by sign (split-learner), and essentially none were unstructured "
+  "(~0% incoherent). Row reorganization and sign coherence traded off continuously and consistently: "
   "neurons that restructured more preserved sign less (Spearman rho = -0.52, the same sign in all 30 "
-  "of 30 sessions). The split-learner neurons are therefore the tail of a continuous trade-off, not "
-  "a discrete category.")
+  "of 30 sessions). This trade-off was not solely an artifact of correlations passing through zero: "
+  "restricting sign coherence to partners with correlation magnitude at least 0.2 in both conditions "
+  "weakened but did not abolish it (rho = -0.21, same sign in 29 of 30 sessions). The split-learner "
+  "neurons are therefore the tail of a continuous trade-off, not a discrete category.")
 H("Reorganization is only weakly related to spike waveform", 12)
 P("Computed within each session and aggregated across sessions, a neuron's reorganization and sign "
   "coherence were related to its extracellular waveform shape consistently but weakly: the largest "
@@ -176,11 +185,16 @@ P("Between the same condition pairs, the field-standard scalar (mean absolute co
   "magnitude almost entirely. The architecture-level view therefore resolves a large reorganization "
   "that a scalar summary flattens.")
 H("Neurons express a small, structured set of coupling regimes", 12)
-P("Across conditions, each neuron expressed a limited number of distinct coupling patterns. The median "
-  "participation ratio of a neuron's coupling profile across conditions was approximately 4 (of a "
-  "possible ~12), far below the condition-shuffled null (median approximately 11); every neuron (100%) "
-  "fell below the null median. Neurons thus reuse a small, structured coupling repertoire across visual "
-  "conditions rather than reconfiguring arbitrarily.")
+P("Across conditions, each neuron's coupling reconfiguration was structured rather than arbitrary. The "
+  "participation ratio of a neuron's coupling profile across conditions (an effective count of distinct "
+  "coupling patterns) had a median of approximately 4 of a possible ~12, far below a condition-shuffled "
+  "null (median approximately 11); every neuron fell below the null median. We emphasize that this "
+  "participation ratio is computed over a single neuron's coupling profile across conditions, not over "
+  "the eigenspectrum of population activity within a condition; it is therefore a statement about how "
+  "structured each neuron's cross-condition reconfiguration is, and not a claim about the dimensionality "
+  "of the population code, which is high and may scale with neuron number (Stringer et al. 2019; Manley "
+  "et al. 2024). Neurons reconfigure their coupling along a constrained, non-random set of patterns "
+  "across visual conditions.")
 
 doc.add_page_break()
 H("DISCUSSION")
@@ -202,13 +216,18 @@ for t in [
  "of the population rather than a property carried by a distinct cell class. We deliberately avoided "
  "imposing an excitatory/inhibitory or fast-spiking/regular-spiking label, both because the extracellular "
  "waveform cannot cleanly separate the relevant interneuron classes and because the data show a continuous "
- "gradient rather than discrete groups. The small per-neuron coupling repertoire (about four structured "
- "regimes, far fewer than chance) indicates that neurons reuse a limited set of coupling patterns across "
- "conditions; we interpret this as a relational description of a neuron's coupling structure and not as a "
- "claim about its anatomical inputs.",
- "The same magnitude-dominated, sign-preserving signature has been reported by this framework in non-"
- "neural correlation systems. We note the convergence but do not test it here; the present claims are "
- "specific to visual cortical population recordings.",
+ "gradient rather than discrete groups. The structured per-neuron coupling reconfiguration (participation "
+ "ratio far below the condition-shuffled null) indicates that each neuron reconfigures along a "
+ "constrained, non-random set of coupling patterns across conditions. This is a statement about the "
+ "constraint on a single neuron's cross-condition coupling, computed over its coupling profile, and is "
+ "distinct from the dimensionality of the population code measured by the eigenspectrum of population "
+ "activity within a condition, which is high-dimensional and may scale without bound (Stringer et al. "
+ "2019; Cunningham and Yu 2014; Manley et al. 2024). We interpret the constrained reconfiguration as a "
+ "relational description of a neuron's coupling structure, not as a claim about its anatomical inputs.",
+ "The same magnitude-dominated, sign-preserving signature has been observed in non-neural correlation "
+ "systems (industrial sensors, blood transcriptomics, financial markets). We note the convergence as "
+ "context but do not test it here; the present claims are specific to visual cortical population "
+ "recordings.",
 ]: P(t)
 H("Limitations", 12)
 P("The analysis is correlational and does not address mechanism or causation. Spike-sorting attribution "
@@ -243,13 +262,22 @@ H("REFERENCES")
 for r in [
  "Cohen MR, Kohn A. Measuring and interpreting neuronal correlations. Nat Neurosci 14: 811-819, 2011. "
  "https://doi.org/10.1038/nn.2842",
+ "Cunningham JP, Yu BM. Dimensionality reduction for large-scale neural recordings. Nat Neurosci 17: "
+ "1500-1509, 2014. https://doi.org/10.1038/nn.3776",
  "Harbert DH. Sigma-1 and sigma-2 receptors exhibit divergent genome-wide co-expression architectures in "
  "human brain despite shared subcellular localization. Front Pharmacol 17: 1830847, 2026. "
  "https://doi.org/10.3389/fphar.2026.1830847",
+ "Jaccard P. The distribution of the flora in the alpine zone. New Phytol 11: 37-50, 1912. "
+ "https://doi.org/10.1111/j.1469-8137.1912.tb05611.x",
+ "Manley J, Lu S, Barber K, et al. Simultaneous, cortex-wide dynamics of up to 1 million neurons reveal "
+ "unbounded scaling of dimensionality with neuron number. Neuron 112: 1694-1709, 2024. "
+ "https://doi.org/10.1016/j.neuron.2024.02.011",
  "Niell CM, Stryker MP. Highly selective receptive fields in mouse visual cortex. J Neurosci 28: 7520-7536, "
  "2008. https://doi.org/10.1523/JNEUROSCI.0623-08.2008",
  "Siegle JH, Jia X, Durand S, et al. Survey of spiking in the mouse visual system reveals functional "
  "hierarchy. Nature 592: 86-92, 2021. https://doi.org/10.1038/s41586-020-03171-x",
+ "Stringer C, Pachitariu M, Steinmetz N, Carandini M, Harris KD. High-dimensional geometry of population "
+ "responses in visual cortex. Nature 571: 361-365, 2019. https://doi.org/10.1038/s41586-019-1346-5",
 ]:
     p = doc.add_paragraph(); p.paragraph_format.line_spacing = 2.0; p.paragraph_format.space_after = Pt(2)
     p.add_run(r).font.size = Pt(12)
