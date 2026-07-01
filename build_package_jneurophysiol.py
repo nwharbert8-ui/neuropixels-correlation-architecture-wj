@@ -30,7 +30,7 @@ P(d, "ORCID: 0009-0007-7740-3616", align=C, size=11, after=2)
 P(d, "Correspondence: Drake H. Harbert, Drake@InnerArchitectureLLC.com", align=C, size=11, after=14)
 P(d, "Running head: Magnitude-driven reorganization in visual cortex", after=2)
 P(d, "Keywords: population coding; spike-count correlations; Neuropixels; visual cortex; "
-      "weighted Jaccard; correlation architecture; sign preservation", after=2)
+      "weighted Jaccard; correlation architecture; sign reversal", after=2)
 P(d, "Conflicts of interest: The author is the founder of Inner Architecture LLC and declares "
       "no other competing interests.", after=2)
 P(d, "Funding: This research received no external funding.", after=2)

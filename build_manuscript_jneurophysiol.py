@@ -72,7 +72,7 @@ P("Neural population activity is commonly characterized through the pairwise cor
   "shuffled null in 100% of neurons). These results characterize how visual population "
   "correlation architecture is reorganized in a way single-metric analyses do not resolve.", after=10)
 P("Keywords: population coding; spike-count correlations; Neuropixels; visual cortex; "
-  "weighted Jaccard; correlation architecture; sign preservation", italic=True, size=11, after=10)
+  "weighted Jaccard; correlation architecture; sign reversal", italic=True, size=11, after=10)
 
 doc.add_page_break()
 H("INTRODUCTION")
@@ -172,7 +172,11 @@ P("Across 2,052 condition pairs, correlation architecture reorganized substantia
   "grows with correlation magnitude (from ~1.7-fold to ~100-fold), meaning that the sign reversals "
   "occurring among strongly correlated pairs are almost entirely genuine reorganization rather than "
   "noise. Sign reversal is thus a small but real and magnitude-scaling component of the "
-  "reorganization; the earlier 50% chance rate is not an adequate null and is not used.")
+  "reorganization. This comparison is conservative by construction: the within-condition null uses "
+  "half the samples per condition, so its correlation matrices are noisier and it overestimates the "
+  "true sampling floor; the observed rate therefore clears an inflated bar, and the genuine sign "
+  "component is if anything underestimated. The earlier 50% chance rate is not an adequate null and "
+  "is not used.")
 H("Most neurons restructure magnitude while preserving sign", 12)
 P("The per-unit decomposition, binning the continuous reorganization-coherence plane into four "
   "descriptive regions (not discrete classes), showed that 56% of neurons restructured their coupling "
@@ -245,10 +249,9 @@ for t in [
  "activity within a condition, which is high-dimensional and may scale without bound (Stringer et al. "
  "2019; Cunningham and Yu 2014; Manley et al. 2024). We interpret the constrained reconfiguration as a "
  "relational description of a neuron's coupling structure, not as a claim about its anatomical inputs.",
- "The same magnitude-dominated, sign-preserving signature has been observed in non-neural correlation "
- "systems (industrial sensors, blood transcriptomics, financial markets). We note the convergence as "
- "context but do not test it here; the present claims are specific to visual cortical population "
- "recordings.",
+ "A magnitude-dominated reorganization signature has also been observed in other, non-neural "
+ "correlation systems. We note the convergence as context but do not test it here; the present claims "
+ "are specific to visual cortical population recordings.",
 ]: P(t)
 H("Limitations", 12)
 P("The analysis is correlational and does not address mechanism or causation. Spike-sorting attribution "
