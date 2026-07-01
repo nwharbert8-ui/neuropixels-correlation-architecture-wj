@@ -46,7 +46,7 @@ P(d, "Re: Submission of an original research article", bold=True, after=10)
 P(d, "Dear Editors,")
 for t in [
  "Please consider the enclosed manuscript, \"" + TITLE + ",\" as an original research article for the Journal of Neurophysiology.",
- "Pairwise spike-count correlations among neurons are central to population coding, yet they are usually summarized by a scalar or compared by unsigned similarity, which treats a correlation sign reversal as no change. Using 30 sessions of the Allen Brain Observatory Visual Coding Neuropixels dataset (2,052 condition comparisons, ~55,000 units), we measured sign reversal directly and stratified by magnitude. Correlation architecture reorganizes substantially between visual conditions, but at every meaningful correlation magnitude the change is in strength, not sign: sign is preserved in more than 98% of pairs, and reorganization is a graded population property only weakly related to spike waveform. A scalar summary changes roughly 60-fold less than the architecture over the same comparisons, and each neuron expresses a small, structured set of coupling regimes.",
+ "Pairwise spike-count correlations among neurons are central to population coding, yet they are usually summarized by a scalar or compared by unsigned similarity, which treats a correlation sign reversal as no change. Using 30 sessions of the Allen Brain Observatory Visual Coding Neuropixels dataset (2,052 condition comparisons, ~55,000 units), we measured sign reversal directly and stratified by magnitude. Correlation architecture reorganizes substantially between visual conditions, predominantly in magnitude: sign reversal is rare (about 1% of strongly correlated pairs). Critically, tested against a within-condition split-half (sampling) null rather than a chance baseline, the observed sign-flip rate significantly exceeds the sampling floor at every magnitude (all 30 sessions, Wilcoxon p < 0.001), so sign reversal is a small but genuine component of the reorganization, not an artifact. Reorganization is a graded population property only weakly related to spike waveform; a scalar summary changes roughly 60-fold less than the architecture; and each neuron expresses a small, structured set of coupling regimes.",
  "We believe the work fits the journal's scope in systems and population neurophysiology, and that the direct, magnitude-stratified treatment of correlation sign is a methodological point of general use. Inference treats sessions, not non-independent pairs, as the replication unit where appropriate, and the limitations (correlational design, somatic integration of dendritic inputs, the relational nature of the coupling-regime measure) are stated explicitly.",
  "We intend to publish under the standard subscription option at no charge. The manuscript is original, is not under consideration elsewhere, and the sole author has approved this submission. All data are public (DANDI 000021) and all analysis code is openly available.",
  "Thank you for your consideration.",
@@ -58,11 +58,12 @@ d.save(os.path.join(OUT, "Cover_Letter.docx"))
 d = newdoc()
 P(d, "Figure Legends", bold=True, after=10, size=13)
 caps = [
- ("Figure 1.", "Direct, magnitude-stratified sign-flip rate across 2,052 condition comparisons "
-  "(30 sessions). The fraction of neuron pairs reversing correlation sign between conditions is "
-  "shown as a function of the magnitude stratum min(|r_A|, |r_B|). The rate is below the 50% chance "
-  "line at every stratum and falls to ~1% at |r| >= 0.2 (every comparison below chance, binomial "
-  "p ~ 0). Reorganization is in correlation magnitude, not sign."),
+ ("Figure 1.", "Observed between-condition sign-flip rate versus the within-condition (sampling) "
+  "null, across 2,052 condition comparisons (30 sessions), by magnitude stratum min(|r_A|, |r_B|); "
+  "log scale. Sign reversal is rare and falls to ~1% at |r| >= 0.2, but the observed rate exceeds the "
+  "within-condition sampling floor at every stratum (all 30 sessions, Wilcoxon p < 0.001; 1.2% "
+  "observed vs 0.01% null at |r| >= 0.2), and the excess over the floor grows with magnitude. "
+  "Reorganization is predominantly in magnitude, with a small but genuine sign component."),
  ("Figure 2.", "Per-neuron row reorganization versus sign coherence (hexbin density, ~55,000 "
   "neurons). Neurons that restructure their coupling more strongly preserve sign less (Spearman "
   "rho = -0.52, same sign in all 30 of 30 sessions). The relationship is continuous; the split-"

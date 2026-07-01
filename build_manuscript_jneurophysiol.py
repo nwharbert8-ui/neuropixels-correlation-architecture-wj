@@ -11,8 +11,9 @@ from docx.shared import Pt, Inches
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 OUT = r"G:/My Drive/inner_architecture_research/neuropixels_wj/JNeurophysiol_Submission"
 os.makedirs(OUT, exist_ok=True)
-TITLE = ("Population correlation architecture in mouse visual cortex reorganizes by "
-         "magnitude, not by sign, across visual stimulus conditions")
+TITLE = ("Correlation-architecture reorganization in mouse visual cortex is predominantly "
+         "in magnitude, with a small but genuine component of sign reversal above the "
+         "sampling floor")
 
 doc = Document()
 for s in doc.sections:
@@ -35,11 +36,13 @@ P("ORCID: 0009-0007-7740-3616  |  Drake@InnerArchitectureLLC.com", align=C, size
 H("New & Noteworthy")
 P("Population analyses usually summarize pairwise correlations with their absolute "
   "magnitude, treating a sign reversal as no change. Applying a sign-resolved, "
-  "threshold-free decomposition to 30 Neuropixels recordings, we show that correlation "
-  "architecture reorganizes substantially between visual conditions but that the change "
-  "is overwhelmingly in magnitude: at meaningful correlation strength, sign is preserved "
-  "in more than 98% of pairs. Reorganization is a graded population property, not the "
-  "property of a distinct cell class.", after=10)
+  "threshold-free decomposition to 30 Neuropixels recordings and testing the sign-flip "
+  "rate against a within-condition (sampling) null rather than a chance baseline, we show "
+  "that reorganization between visual conditions is predominantly in magnitude, yet sign "
+  "reversal, though rare (about 1% of strongly correlated pairs), significantly exceeds "
+  "the sampling floor at every correlation magnitude and is thus a small but genuine "
+  "component of the reorganization. Reorganization is a graded population property, not "
+  "the property of a distinct cell class.", after=10)
 
 H("Abstract")
 P("Neural population activity is commonly characterized through the pairwise correlation "
@@ -50,10 +53,14 @@ P("Neural population activity is commonly characterized through the pairwise cor
   "2,395 units per session, 6 to 8 visual areas), computing the full unit-by-unit "
   "Spearman correlation matrix within each visual stimulus condition and comparing matrices "
   "between conditions across 2,052 condition pairs. Reorganization between conditions was "
-  "large by unsigned weighted Jaccard, yet the direct, magnitude-stratified rate at which "
-  "individual pairs reversed correlation sign was below the 50% chance rate at every "
-  "stratum and fell to approximately 1% among pairs with correlation magnitude at least "
-  "0.2 (every condition pair below chance). A per-unit decomposition showed that most "
+  "large by unsigned weighted Jaccard, and it was predominantly in magnitude: the direct, "
+  "magnitude-stratified rate at which individual pairs reversed correlation sign fell to "
+  "approximately 1% among pairs with correlation magnitude at least 0.2. Tested against a "
+  "within-condition split-half (sampling) null rather than a chance baseline, however, the "
+  "observed sign-flip rate significantly exceeded the sampling floor at every stratum (all "
+  "30 sessions, Wilcoxon p < 0.001; at |r| >= 0.2, 1.2% observed vs 0.01% expected from "
+  "sampling), so sign reversal is rare but genuine and its excess over the floor grows with "
+  "correlation magnitude. A per-unit decomposition showed that most "
   "neurons restructured their coupling in strength while preserving sign (coherent-"
   "magnitude), a minority of about 4% split their partners by sign, and essentially none "
   "were unstructured. Reorganization traded off continuously against sign preservation "
@@ -150,15 +157,22 @@ P("As a baseline we computed the field-standard scalar (mean absolute correlatio
 
 doc.add_page_break()
 H("RESULTS")
-H("Reorganization is large but sign is preserved", 12)
+H("Reorganization is predominantly in magnitude, with a small but genuine sign component", 12)
 P("Across 2,052 condition pairs, correlation architecture reorganized substantially between "
-  "visual conditions (median unsigned reorganization 0.58). The direct, magnitude-stratified "
-  "sign-flip rate, however, was below the 50% chance rate at every stratum. Across all pairs it "
-  "was 38.8% (92% of condition pairs below chance), and it fell monotonically with correlation "
-  "magnitude to 4.3% at min(|r|) >= 0.10, 1.2% at >= 0.20, and 0.5% at >= 0.30, with every "
-  "condition pair below chance at these strata (binomial p approximately 0). Thus, among pairs with "
-  "real correlation magnitude, sign is preserved in more than 98% of cases: the reorganization is a "
-  "rearrangement of correlation strength, not of sign.")
+  "visual conditions (median unsigned reorganization 0.58). Sign reversal was rare and fell "
+  "monotonically with correlation magnitude: the direct, magnitude-stratified sign-flip rate was "
+  "38.8% across all pairs and declined to 4.3% at min(|r|) >= 0.10, 1.2% at >= 0.20, and 0.5% at "
+  ">= 0.30, so at meaningful correlation magnitude the reorganization is predominantly a "
+  "rearrangement of correlation strength. These rates are not, however, sampling artifacts. "
+  "Tested against a within-condition split-half null (the sign-flip rate expected from splitting a "
+  "single condition into two independent samples), with sessions as the replication unit, the "
+  "observed between-condition rate significantly exceeded the sampling floor at every stratum "
+  "(all 30 sessions, Wilcoxon p < 0.001): 38.8% observed vs 23.4% null at all pairs, 4.3% vs 0.9% "
+  "at |r| >= 0.10, and 1.2% vs 0.01% at |r| >= 0.20. The excess over the sampling floor therefore "
+  "grows with correlation magnitude (from ~1.7-fold to ~100-fold), meaning that the sign reversals "
+  "occurring among strongly correlated pairs are almost entirely genuine reorganization rather than "
+  "noise. Sign reversal is thus a small but real and magnitude-scaling component of the "
+  "reorganization; the earlier 50% chance rate is not an adequate null and is not used.")
 H("Most neurons restructure magnitude while preserving sign", 12)
 P("The per-unit decomposition, binning the continuous reorganization-coherence plane into four "
   "descriptive regions (not discrete classes), showed that 56% of neurons restructured their coupling "
@@ -200,18 +214,25 @@ doc.add_page_break()
 H("DISCUSSION")
 for t in [
  "Across 30 Neuropixels recordings, the pairwise correlation architecture of mouse visual cortex "
- "reorganizes substantially between visual conditions, but the reorganization is, at every meaningful "
- "correlation magnitude, a change in correlation strength rather than a reversal of correlation sign. "
- "Sign reversals occur essentially only among near-zero correlations, where sign is not meaningful, and "
- "fall to about 1% of pairs once a modest magnitude is required. The population view and the per-unit "
- "view agree: most neurons restructure coupling magnitude while preserving sign, reorganization and sign "
- "preservation trade off continuously, and only a small minority split their partners by sign.",
- "This characterization depends on measuring sign reversal directly and stratifying by magnitude. "
- "Summaries that compare correlation matrices by unsigned similarity, or that infer a sign-inversion "
- "fraction from the gap between a sign-handling similarity and an unsigned one, can substantially "
- "overstate sign reorganization, because such gaps are dominated by magnitude changes among weak "
- "correlations. The direct, magnitude-stratified rate is the appropriate measure, and it gives the "
- "opposite conclusion: sign is preserved.",
+ "reorganizes substantially between visual conditions. That reorganization is predominantly a change in "
+ "correlation strength: sign reversal is rare and falls to about 1% of pairs once a modest correlation "
+ "magnitude is required. It is not, however, merely sampling noise. When the observed between-condition "
+ "sign-flip rate is compared to a within-condition split-half null, it significantly exceeds the "
+ "sampling floor at every magnitude stratum (all 30 sessions), and the excess grows with magnitude, so "
+ "the sign reversals that do occur among strongly correlated pairs are genuine reorganization. The "
+ "honest summary is therefore magnitude-dominated reorganization with a small but real, magnitude-"
+ "scaling sign component, not sign preservation. The population and per-unit views agree: most neurons "
+ "restructure coupling magnitude while largely preserving sign, reorganization and sign coherence trade "
+ "off continuously, and a small minority split their partners by sign.",
+ "This characterization depends on two methodological choices: measuring sign reversal directly and "
+ "stratifying by magnitude, and testing it against a structure-preserving (within-condition) null "
+ "rather than a chance baseline. Unsigned similarity discards sign entirely, and inferring a sign-"
+ "inversion fraction from the gap between a sign-handling and an unsigned similarity overstates sign "
+ "change because such gaps are dominated by magnitude changes among weak correlations. Equally, a 50% "
+ "chance baseline is the wrong null: strong correlations reflect shared input and do not flip at coin-"
+ "flip rates, so comparing to 50% makes a trivial observation look like a finding. Only the direct "
+ "rate against the within-condition null separates the small genuine sign component from the sampling "
+ "floor.",
  "The reorganization is only weakly related to extracellular waveform shape, so it is a graded property "
  "of the population rather than a property carried by a distinct cell class. We deliberately avoided "
  "imposing an excitatory/inhibitory or fast-spiking/regular-spiking label, both because the extracellular "
@@ -241,8 +262,11 @@ P("The analysis is correlational and does not address mechanism or causation. Sp
   "interpreted as cell-type effects.")
 H("Conclusions", 12)
 P("Visual cortical population correlation architecture is reorganized between stimulus conditions "
-  "predominantly through changes in correlation magnitude, with correlation sign preserved at all "
-  "meaningful magnitudes, as a graded property of the population that a scalar summary does not resolve.")
+  "predominantly through changes in correlation magnitude, with a small but genuine component of sign "
+  "reversal that exceeds the within-condition sampling floor at every magnitude and grows in relative "
+  "size with correlation strength. The reorganization is a graded property of the population that a "
+  "scalar summary does not resolve, and its sign component is visible only to a direct, magnitude-"
+  "stratified measurement tested against a structure-preserving null.")
 
 doc.add_page_break()
 H("DISCLOSURES")

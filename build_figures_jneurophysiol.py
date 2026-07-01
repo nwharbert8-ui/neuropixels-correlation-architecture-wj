@@ -14,20 +14,22 @@ def save(fig, name):
     fig.savefig(os.path.join(OUT, name + ".png"), dpi=300, bbox_inches="tight")
     fig.savefig(os.path.join(OUT, name + ".pdf"), bbox_inches="tight"); plt.close(fig)
 
-# ---- Fig 1: direct sign-flip rate vs magnitude stratum ----
-prov = json.load(open(os.path.join(B, "provenance.json")))
-st = prov["sign_flip_rate_by_stratum"]
+# ---- Fig 1: observed sign-flip rate vs within-condition (sampling) null ----
+nj = json.load(open(os.path.join(B, "withincond_null", "withincond_null_summary.json")))["by_stratum"]
 thr = [0.0, 0.05, 0.10, 0.15, 0.20, 0.30]
-rate = [st[f"thr_{t}"]["mean_sign_flip_rate"] * 100 for t in thr]
-fig, ax = plt.subplots(figsize=(7, 5.5))
-ax.axhline(50, color=GREY, ls="--", lw=1.5, label="chance (50%)")
-ax.plot(thr, rate, "o-", color=ORANGE, lw=2.5, ms=9, mec="black", mew=0.6, label="observed sign-flip rate")
-for t, r in zip(thr, rate):
-    ax.annotate(f"{r:.1f}%", (t, r), textcoords="offset points", xytext=(6, 8), fontsize=9)
+obs = [nj[f"thr_{t}"]["observed_between_cond_flip"] * 100 for t in thr]
+nul = [max(nj[f"thr_{t}"]["within_cond_null_flip"] * 100, 0.005) for t in thr]  # floor for log axis
+fig, ax = plt.subplots(figsize=(7.5, 5.5))
+ax.plot(thr, obs, "o-", color=ORANGE, lw=2.5, ms=9, mec="black", mew=0.6, label="observed between-condition")
+ax.plot(thr, nul, "s--", color=GREY, lw=2, ms=8, mec="black", mew=0.5, label="within-condition null (sampling floor)")
+ax.set_yscale("log")
+for t, o in zip(thr, obs):
+    ax.annotate(f"{o:.2f}%", (t, o), textcoords="offset points", xytext=(4, 8), fontsize=8, color="#8a3b00")
 ax.set_xlabel("magnitude stratum  min(|r$_A$|, |r$_B$|)", fontsize=12)
-ax.set_ylabel("pairs reversing correlation sign (%)", fontsize=12)
-ax.set_title("Sign is preserved: direct sign-flip rate is below chance and\nfalls to ~1% at meaningful correlation magnitude (2,052 comparisons)", fontsize=11)
-ax.set_ylim(-3, 58); ax.legend(fontsize=11); ax.grid(alpha=0.25)
+ax.set_ylabel("pairs reversing correlation sign (%, log scale)", fontsize=12)
+ax.set_title("Sign reversal is rare but exceeds the sampling floor at every magnitude\n"
+             "(observed >> within-condition null; all 30 sessions, Wilcoxon p < 0.001)", fontsize=11)
+ax.legend(fontsize=10, loc="upper right"); ax.grid(alpha=0.25, which="both")
 save(fig, "Fig1_signflip_stratified")
 
 # ---- Fig 2: per-unit reorganization vs sign coherence (the -0.52 trade-off) ----
